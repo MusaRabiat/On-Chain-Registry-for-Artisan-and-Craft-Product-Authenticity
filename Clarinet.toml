@@ -13,7 +13,17 @@ epoch = 'latest'
 [contracts.registry]
 path = 'contracts/registry.clar'
 clarity_version = 3
-epoch = '3.2'
+epoch = 'latest'
+
+[contracts.certification]
+path = 'contracts/certification.clar'
+clarity_version = 3
+epoch = 'latest'
+
+[contracts.disputes]
+path = 'contracts/disputes.clar'
+clarity_version = 3
+epoch = 'latest'
 [repl.analysis]
 passes = ['check_checker']
 
