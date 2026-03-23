@@ -60,6 +60,16 @@ plan:
     - id: 0
       transactions:
         - emulated-contract-publish:
+            contract-name: certification
+            emulated-sender: ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM
+            path: "contracts\\certification.clar"
+            clarity-version: 3
+        - emulated-contract-publish:
+            contract-name: disputes
+            emulated-sender: ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM
+            path: "contracts\\disputes.clar"
+            clarity-version: 3
+        - emulated-contract-publish:
             contract-name: nft
             emulated-sender: ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM
             path: "contracts\\nft.clar"

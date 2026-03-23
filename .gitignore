@@ -2,7 +2,9 @@
 **/settings/Mainnet.toml
 **/settings/Testnet.toml
 .cache/**
+.claude/**
 history.txt
+PR_SUMMARY.md
 
 logs
 *.log
