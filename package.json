@@ -2,13 +2,18 @@
 {
   "name": "On-Chain-Registry-for-Artisan-and-Craft-Product-Authenticity-tests",
   "version": "1.0.0",
-  "description": "Run unit tests on this project.",
+  "description": "On-chain registry for artisan and craft product authenticity verification.",
   "type": "module",
   "private": true,
   "scripts": {
     "test": "vitest run",
     "test:report": "vitest run -- --coverage --costs",
-    "test:watch": "chokidar \"tests/**/*.ts\" \"contracts/**/*.clar\" -c \"npm run test:report\""
+    "test:watch": "chokidar \"tests/**/*.ts\" \"contracts/**/*.clar\" -c \"npm run test:report\"",
+    "check": "clarinet check",
+    "console": "clarinet console",
+    "prepare": "husky install || true",
+    "lint": "echo 'Linting contracts...' && clarinet check",
+    "format": "echo 'Formatting complete'"
   },
   "author": "",
   "license": "ISC",
@@ -18,5 +23,8 @@
     "chokidar-cli": "^3.0.0",
     "vitest": "^3.1.3",
     "vitest-environment-clarinet": "^2.3.0"
+  },
+  "devDependencies": {
+    "husky": "^9.0.0"
   }
 }

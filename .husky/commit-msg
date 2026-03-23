@@ -1,0 +1,49 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "Running commit message validation..."
+
+# Get the commit message
+COMMIT_MSG_FILE=$1
+COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
+
+# Check commit message format
+# Format: type(scope): description
+# Types: feat, fix, docs, style, refactor, test, chore, ci, perf
+
+COMMIT_REGEX="^(feat|fix|docs|style|refactor|test|chore|ci|perf)(\(.+\))?: .{1,}"
+
+if ! echo "$COMMIT_MSG" | grep -Eq "$COMMIT_REGEX"; then
+    echo "Error: Invalid commit message format."
+    echo ""
+    echo "Expected format: type(scope): description"
+    echo ""
+    echo "Types:"
+    echo "  feat     - A new feature"
+    echo "  fix      - A bug fix"
+    echo "  docs     - Documentation changes"
+    echo "  style    - Code style changes (formatting)"
+    echo "  refactor - Code refactoring"
+    echo "  test     - Adding or updating tests"
+    echo "  chore    - Maintenance tasks"
+    echo "  ci       - CI/CD changes"
+    echo "  perf     - Performance improvements"
+    echo ""
+    echo "Examples:"
+    echo "  feat(contracts): add certification tier system"
+    echo "  fix: resolve dispute resolution error"
+    echo "  docs: update developer setup guide"
+    echo ""
+    exit 1
+fi
+
+# Check minimum message length (at least 10 characters for description)
+MIN_LENGTH=10
+MSG_LENGTH=${#COMMIT_MSG}
+
+if [ $MSG_LENGTH -lt $MIN_LENGTH ]; then
+    echo "Error: Commit message too short. Minimum $MIN_LENGTH characters required."
+    exit 1
+fi
+
+echo "Commit message validation passed!"
